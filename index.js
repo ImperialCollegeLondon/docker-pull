@@ -9,7 +9,7 @@ var pull = function (image, opts, cb) {
   if (typeof opts === 'function') return pull(image, null, opts)
   if (!opts) opts = {}
 
-  image = parse(image)
+  // image = parse(image)
   if (!image) throw new Error('Invalid image')
 
   var request = docker(opts.host, {version: opts.version || 'v1.15'})
@@ -17,7 +17,7 @@ var pull = function (image, opts, cb) {
   var layers = {}
   var progress = {}
 
-  that.image = image.name
+  // that.image = image.name
 
   progress.layers = that.layers = 0
   progress.transferred = that.transferred = 0
@@ -44,9 +44,9 @@ var pull = function (image, opts, cb) {
 
   var post = request.post('/images/create', {
     qs: {
-      fromImage: (image.namespace ? image.namespace + '/' : '') + image.repository,
-      tag: image.tag || 'latest',
-      registry: image.registry || ''
+      fromImage: image // (image.namespace ? image.namespace + '/' : '') + image.repository,
+      // tag: image.tag || 'latest',
+      // registry: image.registry || ''
     },
     headers: {
       'X-Registry-Auth': {
