@@ -17,7 +17,7 @@ var pull = function (image, opts, cb) {
   var layers = {}
   var progress = {}
 
-  // that.image = image.name
+  that.image = image
 
   progress.layers = that.layers = 0
   progress.transferred = that.transferred = 0
